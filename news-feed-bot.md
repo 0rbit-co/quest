@@ -14,7 +14,7 @@ The bot will be evaluated based on the live demo and the codebase. Submit a PR [
 
 ## Submission
 - ```bash
-  aos> Send({Target= "O3SXXYqQCNTbBedJjsW6wkPnrKFZq8DPLkKjO7zhztE", Action = "Claim-Quest", Name = "News-Bot"})
+  aos> Send({Target= "O3SXXYqQCNTbBedJjsW6wkPnrKFZq8DPLkKjO7zhztE", Action = "Claim-Quest", Quest = "News-Bot", User = <username>})
   ```
   
 ## Hints

@@ -1,5 +1,7 @@
 # Price Feed Bot for Chatroom
 
+### Name => Price-Feed-Bot
+
 ## Task
 
 Create a bot for the chatroom that will provide the price feed for a token(s) when asked by the users.

@@ -1,6 +1,6 @@
 # Price Feed Bot for Chatroom
 
-### Name => Price-Feed-Bot
+### Name => Price-Bot
 
 ## Task
 

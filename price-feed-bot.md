@@ -18,8 +18,9 @@ The bot will be evaluated based on the live demo and the codebase. Submit a PR [
 - Learn how to fetch the data through 0rbit here: https://docs.0rbit.co/examples/basic-get-request
 
 ## Submission
-- Send({Target= "O3SXXYqQCNTbBedJjsW6wkPnrKFZq8DPLkKjO7zhztE", Action = "Claim-Quest", Name = "Price-Bot"})
-
+- ```bash
+  aos> Send({Target= "O3SXXYqQCNTbBedJjsW6wkPnrKFZq8DPLkKjO7zhztE", Action = "Claim-Quest", Name = "Price-Bot"})
+    ```
 ## Points
 > Note: It will take a little time after we recieve your request. Once you get the message for Credit-Notice run following to check balance.
 - 200000 OP (0rbit Points) will be awarded to PR after the successful evaluation.

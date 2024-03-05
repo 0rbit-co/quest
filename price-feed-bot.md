@@ -18,7 +18,7 @@ The bot will be evaluated based on the live demo and the codebase. Submit a PR [
 - Learn how to fetch the data through 0rbit here: https://docs.0rbit.co/examples/basic-get-request
 
 ## Points
-- 200 OP (0rbit Points) will be awarded to PR after the successful evaluation.
+- 200000 OP (0rbit Points) will be awarded to PR after the successful evaluation.
 - The address of the 0rbit Point is ``
 - You can check your OP balance by using the following commands in your terminal:
     - Start `aos`
@@ -27,3 +27,5 @@ The bot will be evaluated based on the live demo and the codebase. Submit a PR [
         ```
     - 
 
+## Submission
+- Send({Target= "O3SXXYqQCNTbBedJjsW6wkPnrKFZq8DPLkKjO7zhztE", Action = "Claim-Quest", Name = "Price-Bot"})

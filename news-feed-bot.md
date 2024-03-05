@@ -1,5 +1,7 @@
 # News Feed Bot
 
+### Name => News-Bot
+
 ## Task
 A Cron-bot that will post the latest news every 4 hours.
 

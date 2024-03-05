@@ -1,8 +1,7 @@
-# Price Feed Bot for Chatroom
+# News Feed Bot
 
 ## Task
-
-Create a bot for the chatroom that will provide the price feed for a token(s) when asked by the users.
+ A Cron-bot that will post the latest news every 4 hours.
 
 ## Requirements
 - Must use 0rbit's `ao` process to fetch the data from the API.

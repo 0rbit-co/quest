@@ -29,3 +29,7 @@ The bot will be evaluated based on the live demo and the codebase. Submit a PR [
 
 ## Submission
 - Send({Target= "O3SXXYqQCNTbBedJjsW6wkPnrKFZq8DPLkKjO7zhztE", Action = "Claim-Quest", Name = "Price-Bot"})
+
+## Check Balance
+> Note: It will take a little time after we recieve your request. Once you get the message for Credit-Notice run following to check balance.
+- Send({Target= "BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc", Action = "Balance"})

@@ -19,7 +19,7 @@ The bot will be evaluated based on the live demo and the codebase. Submit a PR [
 
 ## Submission
 - ```bash
-  aos> Send({Target= "O3SXXYqQCNTbBedJjsW6wkPnrKFZq8DPLkKjO7zhztE", Action = "Claim-Quest", Name = "Price-Bot"})
+  aos> Send({Target= "O3SXXYqQCNTbBedJjsW6wkPnrKFZq8DPLkKjO7zhztE", Action = "Claim-Quest", Quest = "Price-Bot", User = <username>})
     ```
 ## Points
 > Note: It will take a little time after we recieve your request. Once you get the message for Credit-Notice run following to check balance.

@@ -1,6 +1,6 @@
 # 0rbit Quests
 
-> Note: Before picking up the quest please get yourself familiar with https://cookbook_ao.arweave.dev/welcome/index.html and then  Join `Quest` channel and there pick up the quest and submit using the commang mentioned in the Url.
+> Note: Before picking up the quest please get yourself familiar with https://cookbook_ao.arweave.dev/welcome/index.html and then  Join `Quest` channel and there pick up the quest and submit using the command mentioned in the Url.
 
 - #1
 

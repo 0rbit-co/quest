@@ -1,0 +1,80 @@
+-- Importing required libraries
+local http = require("socket.http")
+local json = require("json")
+
+-- CoinGecko API endpoint for token price
+local api_endpoint = "https://api.coingecko.com/api/v3/simple/price"
+
+-- Your CoinGecko API key (replace with your actual key)
+local api_key = "YOUR_COINGECKO_API_KEY"
+
+-- Initializing global variables to store the latest game state and game host process.
+LatestGameState = LatestGameState or nil
+-- Prevents the agent from taking multiple actions at once.
+InAction = InAction or false 
+
+Logs = Logs or {}
+
+}
+
+function addLog(msg, text)
+  Logs[msg] = Logs[msg] or {}
+  table.insert(Logs[msg], text)
+end
+
+-- Function to get token price
+function getTokenPrice(token)
+    local url = api_endpoint .. "?ids=" .. token .. "&vs_currencies=usd"
+    local response, status = http.request(url)
+
+    if status == 200 then
+        local data = json.decode(response)
+        if data[token] and data[token]["usd"] then
+            return data[token]["usd"]
+        else
+            return "Token not found or price not available."
+        end
+    else
+        return "Error fetching token price."
+    end
+end
+
+-- Function to handle user queries for token prices
+function handleTokenPriceQuery(token)
+    local price = getTokenPrice(token)
+    print("Price of " .. token .. ": $" .. price)
+end
+
+-- Decides the next action based on player proximity and energy.
+-- ... (rest of the existing code)
+
+-- Handler to decide the next best action.
+Handlers.add(
+  "decideNextAction",
+  Handlers.utils.hasMatchingTag("Action", "UpdatedGameState"),
+  function ()
+    if LatestGameState.GameMode ~= "Playing" then
+      InAction = false
+      return
+    end
+    print("Deciding next action.")
+    decideNextAction()
+    ao.send({Target = ao.id, Action = "Tick"})
+  end
+)
+
+-- Handler to handle user queries for token prices
+Handlers.add(
+  "handleTokenPriceQuery",
+  Handlers.utils.hasMatchingTag("Action", "TokenPriceQuery"),
+  function (msg)
+    local token = msg.Token
+    print("User asking for the price of " .. token)
+    handleTokenPriceQuery(token)
+  end
+)
+
+-- (Additional handlers can be added for other functionalities)
+
+-- Sample usage: Send a message to the bot asking for the token price
+-- ao.send({Target = Bot, Action = "TokenPriceQuery", Token = "your_token_symbol"})

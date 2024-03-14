@@ -12,11 +12,11 @@ Handlers.add(
             coin_ids = coin_ids .. i .. '%2C'
         end
 
-        local response = ao.send({
+        Send({
             Target = _0RBIT,
             Action = "Get-Real-Data",
-            Url = 'https://api.coingecko.com/api/v3/simple/price?ids=' .. coin_ids .. '&vs_currencies=usd'
+            Url = 'https://api.coingecko.com/api/v3/simple/price?ids=' .. coin_ids .. '&vs_currencies=usd',
         })
-        Handlers.utils.reply(response.Data)(msg)
+        Handlers.utils.reply("Response")(msg)
     end
 )

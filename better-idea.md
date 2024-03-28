@@ -4,13 +4,13 @@
 
 ## Task
 
-##### Create ao process using BetterIdea
+##### Create an ao process using BetterIdea (with functionality)
 
 ## Evaluation
 
 - The first 100 wallets who create an ao process on BetterIDEa using 0rbit will be awarded 50 0rbit tokens (50.000 Orbit Points) each after the successful evaluation.
 
-## Hints
+## Requirements
 
 - Use BetterIDEa env https://betteridea.dev/
 

@@ -1,3 +1,4 @@
+
 -- PID/process ID : bdnsFXyx6B8CnrjfbgCoXEc9HlhakPyY0D0ZH14wWS4
 
 _0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s" -- Ganti dengan ID proses 0rbit aktual Anda

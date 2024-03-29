@@ -1,4 +1,4 @@
--- 
+-- process id : Mvxkcs-OkVzjv3YgJ6mBl12VfWMucs-uqyVzP56LyH4
 
 _0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s" -- Ganti dengan ID proses 0rbit aktual Anda
 BASE_URL = "https://api.coingecko.com/api/v3/simple/price"

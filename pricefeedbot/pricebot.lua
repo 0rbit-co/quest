@@ -1,5 +1,8 @@
 
--- PID/process ID : bdnsFXyx6B8CnrjfbgCoXEc9HlhakPyY0D0ZH14wWS4
+-- PID/process ID : 3as909c-PCKx2T1N2Zb3lElHMFhQ3ooUui3bJdOh974
+-- Users : 0xadefebrian
+-- Github : github.com/adefebrian
+
 
 _0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s" -- Ganti dengan ID proses 0rbit aktual Anda
 BASE_URL = "https://api.coingecko.com/api/v3/simple/price"

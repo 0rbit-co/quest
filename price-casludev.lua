@@ -2,7 +2,7 @@
 
 _0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"
 
-Handlers.add("casludev"), 
+Handlers.add("casludev", 
     Handlers.utils.hasMatchingTag("Action", "casludev-github"),
     function(msg)
         local token = msg.Tags.Token 

@@ -16,5 +16,3 @@ Handlers.add("Mhmddikri21", -- change this (username)
         Handlers.utils.reply("PriceFetch")(msg)
     end
 )
-
-

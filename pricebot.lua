@@ -1,7 +1,11 @@
--- PID = G3QZGr4Wz72Cj-TMOeuNDjyaxA8LCNd1OOBhS8RjOcU
+-- PID/process ID = G3QZGr4Wz72Cj-TMOeuNDjyaxA8LCNd1OOBhS8RjOcU
+-- Users = onedionys
+-- Github = github.com/onedionys
+-- Wallet Address = SOJWzPvVfVXMUx_oPb10H0AL7zKULidKCJ7e5S_AnOc
 
-_0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s" 
+_0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"  -- Replace with your actual 0rbit process ID
 
+-- Functional Error Handling (optional)
 function handleError(msg, errorMessage)
     ao.send({
         Target = msg.From,
@@ -13,6 +17,7 @@ function handleError(msg, errorMessage)
     })
 end
 
+-- Token Price Inquiry Handling
 Handlers.add(
     "callmedionys",
     Handlers.utils.hasMatchingTag("Action", "callmedionys"),
@@ -27,6 +32,6 @@ Handlers.add(
             Url = url
         })
 
-        Handlers.utils.reply("PriceFetch")(msg) 
+        Handlers.utils.reply("PriceFetch")(msg) -- Change "Response" to "PriceFetch"
     end
 )

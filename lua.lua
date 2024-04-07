@@ -2,7 +2,6 @@
 _ORBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"
 
 function handleError(msg,errorMsg)
-
   ao.send({
     Target= msg.From,
     Tags = {Action= "Error",["Message-Id"]=msg.Id,Error =errorMsg}
@@ -23,6 +22,5 @@ function(msg)
   {msg}
 end
 )
-
 
 Send({Target=ao.id,Action="zedd-nyx",Token = "ethereum"})

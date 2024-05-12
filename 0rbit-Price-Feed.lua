@@ -33,7 +33,7 @@ LOGS = LOGS or {}
 
 local function fetchPrice()
     local url;
-    local token_ids;
+    local token_ids = "";
 
     for _, v in pairs(TOKEN_PRICES) do
         token_ids = token_ids .. v.coingecko_id .. ","
@@ -43,7 +43,7 @@ local function fetchPrice()
     print(url)
 
     Send({ Target = _0RBIT, Action = "Get-Real-Data", Url = url })
-    print(Colors.green .. "GET Request sent to the 0rbit process." .. Colors.reset)
+    print(Colors.green .. "GET Request " .. url .. " sent to the 0rbit process." .. Colors.reset)
 end
 
 local function receiveData(msg)

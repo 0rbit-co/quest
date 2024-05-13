@@ -22,9 +22,8 @@ ao.send({
     Target = _ORBIT,
     Action = "Get-Real-Data",
     Url = url
-})
+}) 
 Handlers.utils.reply("PriceFetch")
 (msg)
 end
-
 )

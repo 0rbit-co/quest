@@ -1,27 +1,24 @@
 local json = require("json")
 
 _0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"
-_0RBT_TOKEN = "BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc"
+-- _0RBT_TOKEN = "BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc"
 
 -- URL = "https://api.polygon.io/v3/reference/tickers/AAPL?apiKey=LN8bb9eXVfj5etsCAZpV87QA0B1hppjT"
 URL = "https://saurav.tech/NewsAPI/top-headlines/category/health/in.json"
 
-FEE_AMOUNT = "1000000000000" -- 1 $0RBT
 NEWS = NEWS or {}
 
-function fetchNews()
+local function fetchNews()
     Send({
-        Target = _0RBT_TOKEN,
-        Action = "Transfer",
-        Recipient = _0RBIT,
-        Quantity = FEE_AMOUNT,
-        ["X-Url"] = URL,
-        ["X-Action"] = "Get-Real-Data"
+        Target = _0RBIT,
+        Action = "Get-Real-Data",
+        Url = URL,
     })
-    print(Colors.green .. "GET Request sent to the 0rbit process." .. Colors.reset)
+    print(Colors.green .. "GET Request " .. URL .. " sent to the 0rbit process." .. Colors.reset)
 end
 
-function receiveData(msg)
+local function receiveData(msg)
+    print("data received...")
     local res = json.decode(msg.Data);
     local articles;
     local article;
@@ -42,7 +39,7 @@ function receiveData(msg)
     end
 end
 
-function getNews(msg)
+local function getNews(msg)
     local news = json.encode(NEWS)
     Handlers.utils.reply(news)(msg)
 end
@@ -61,6 +58,6 @@ Handlers.add(
 
 Handlers.add(
     "ReceiveData",
-    Handlers.utils.hasMatchingTag("Action", "Receive-Data-Feed"),
+    Handlers.utils.hasMatchingTag("Action", "Receive-Response"),
     receiveData
 )

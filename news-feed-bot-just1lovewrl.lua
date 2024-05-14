@@ -7,7 +7,6 @@ _0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"
 _0RBT_TOKEN = "BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc"
 
 -- Base URL for News API
-URL = "https://saurav.tech/NewsAPI/top-headlines/category/health/in.json"
 FEE_AMOUNT = "1000000000000" -- 1 $0RBT
 
 NEWS = NEWS or {}

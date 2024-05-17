@@ -1,4 +1,4 @@
-# 0rbit Quests
+git # 0rbit Quests
 
 > Note: Before picking up the quest please get yourself familiar with https://cookbook_ao.arweave.dev/welcome/index.html and then  Join `Quest` channel and pick up the quest and submit using the command mentioned in the Url.
 
@@ -25,3 +25,6 @@ Points: 300 $0RBT Points will be awarded to PR after the successful evaluation. 
 Url: To gather more information about this quest, visit https://github.com/0rbit-co/quest/blob/main/news-feed-bot.md
 
 
+
+
+price-feed-bot-slatro

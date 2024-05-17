@@ -1,5 +1,4 @@
--- ao.id  t59ziMq-MB6ldpqyx9aboGOUxgDQ7eV9z3afKshBUy8
-
+-- ao.id  qZPwk8MtROInriulnXZKYBc-d21QZlYm4xMnEjOgajM
 local json = require("json")
 local _0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"
 local URL = "https://api.theblockbeats.news/v1/open-api/open-flash?size=5&page=1&type=push"

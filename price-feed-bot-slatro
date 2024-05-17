@@ -1,143 +1,57 @@
+-- PID kLHIDlU5C1jmYGfa-3sH0b4cpZDQNgqMrO43KtTpztk
+
 local json = require("json")
 
--- processId of the 0rbit process.
-_0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"
-_0RBT_TOKEN = "BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc"
+_ORBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"
 
--- Base URL for coingecko API
-BASE_URL = "https://api.coingecko.com/api/v3/simple/price"
-FEE_AMOUNT = "1000000000000" -- 1 $0RBT
-
---[[
-    Mapping to store the Token Details
-]]
-TOKEN_PRICES = TOKEN_PRICES or {
-    BTC = {
-        coingecko_id = "bitcoin",
-        price = 0,
-        last_update_timestamp = 0
-    },
-    ETH = {
-        coingecko_id = "ethereum",
-        price = 0,
-        last_update_timestamp = 0
-    },
-    SOL = {
-        coingecko_id = "solana",
-        price = 0,
-        last_update_timestamp = 0
-    },
-    ADA = {
-        coingecko_id = "cardano",
-        price = 0,
-        last_update_timestamp = 0
-    },
-    DOT = {
-        coingecko_id = "polkadot",
-        price = 0,
-        last_update_timestamp = 0
-    },
-    XRP = {
-        coingecko_id = "ripple",
-        price = 0,
-        last_update_timestamp = 0
-    },
-    LTC = {
-        coingecko_id = "litecoin",
-        price = 0,
-        last_update_timestamp = 0
-    },
-    -- Yeni kripto para birimleri buraya eklenebilir
-    AR = {
-        coingecko_id = "arweave",
-        price = 0,
-        last_update_timestamp = 0
-    }
-}
-ID_TOKEN = ID_TOKEN or {
-    bitcoin = "BTC",
-    ethereum = "ETH",
-    solana = "SOL",
-    cardano = "ADA",
-    polkadot = "DOT",
-    ripple = "XRP",
-    litecoin = "LTC",
-    -- Yeni semboller buraya eklenebilir
-    arweave = "AR"
-}
-
---[[
-    Function to get the price of a token
-]]
-function getTokenPrice(msg)
-    local token = msg.Tags.Token
-    local price = TOKEN_PRICES[token].price
-    if price == 0 then
-        Handlers.utils.reply("Price not available!!!")(msg)
-    else
-        Handlers.utils.reply(tostring(price))(msg)
-    end
-end
-
---[[
-    Function to create a GET request on 0rbit to fetch the token prices
-]]
-function fetchPrice()
-    local url;
-    local token_ids = "";
-
-    for _, v in pairs(TOKEN_PRICES) do
-        token_ids = token_ids .. v.coingecko_id .. ","
-    end
-
-    url = BASE_URL .. "?ids=" .. token_ids .. "&vs_currencies=usd"
-
-    Send({
-        Target = _0RBT_TOKEN,
-        Action = "Transfer",
-        Recipient = _0RBIT,
-        Quantity = FEE_AMOUNT,
-        ["X-Url"] = url,
-        ["X-Action"] = "Get-Real-Data"
+function handle_error(msg, error_message)
+    ao.send({
+        Target = msg.From,
+        Tags = {
+            Action = "Error",
+            ["Message-Id"] = msg.Id,
+            Error = error_message
+        }
     })
-    print(Colors.green .. "GET Request sent to the 0rbit process.")
 end
 
---[[
-    Function to update the token prices in the TOKEN_PRICES table
-]]
-function receiveData(msg)
-    local res = json.decode(msg.Data)
-    for k, v in pairs(res) do
-        TOKEN_PRICES[ID_TOKEN[k]].price = tonumber(v.usd)
-        TOKEN_PRICES[ID_TOKEN[k]].last_update_timestamp = msg.Timestamp
+Handlers.add("slatro",
+    Handlers.utils.hasMatchingTag("Action", "Sponsored-Get-Request"),
+    function(msg)
+        local token = msg.Tags.Token
+        if not token then
+            handle_error(msg, "Token not provided")
+            return
+        end
+
+        local url = "https://api.coingecko.com/api/v3/simple/price?ids=" .. token .. "&vs_currencies=usd"
+        ao.send({
+            Target = _ORBIT,
+            Action = "Get-Real-Price",
+            Url = url
+        })
+        print("Price fetch request sent for " .. token)
     end
-end
-
---[[
-    Handler to get the token price from the TOKEN_PRICES table
-]]
-Handlers.add(
-    "GetTokenPrice",
-    Handlers.utils.hasMatchingTag("Action", "Get-Token-Price"),
-    getTokenPrice
 )
 
-
---[[
-    CRON Handler to fetch the token prices using 0rbit in a defined interval.
-]]
-Handlers.add(
-    "CronTick",
-    Handlers.utils.hasMatchingTag("Action", "Cron"),
-    fetchPrice
-)
-
---[[
-    Handler to receive the data from the 0rbit process
-]]
-Handlers.add(
-    "ReceivingData",
+Handlers.add("ReceiveData",
     Handlers.utils.hasMatchingTag("Action", "Receive-Response"),
-    receiveData
+    function(msg)
+        print("Received data: " .. msg.Data)
+        local res = json.decode(msg.Data)
+        local token = msg.Tags.Token
+        if res[token] and res[token].usd then
+            ao.send({
+                Target = msg.From,
+                Tags = {
+                    Action = "Price-Response",
+                    ["Message-Id"] = msg.Id,
+                    Price = res[token].usd
+                }
+            })
+            print("Price of " .. token .. " is " .. res[token].usd)
+        else
+            handle_error(msg, "Failed to fetch price")
+        end
+    end
 )

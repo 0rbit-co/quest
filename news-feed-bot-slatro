@@ -1,0 +1,77 @@
+local json = require("json")
+
+-- processId of the 0rbit process.
+_0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"
+_0RBT_TOKEN = "BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc"
+
+-- Base URL for CoinTelegraph API
+URL = "https://api.coindesk.com/v1/bpi/currentprice.json"
+FEE_AMOUNT = "1000000000000" -- 1 $0RBT
+
+CRYPTO_NEWS = CRYPTO_NEWS or {}
+
+--[[
+    Function to send the latest crypto news.
+]]
+function getCryptoNews(msg)
+    local news = json.encode(CRYPTO_NEWS)
+    Handlers.utils.reply(news)(msg)
+end
+
+--[[
+    Function to fetch the crypto news using the 0rbit.
+]]
+function fetchCryptoNews()
+    Send({
+        Target = _0RBT_TOKEN,
+        Action = "Transfer",
+        Recipient = _0RBIT,
+        Quantity = FEE_AMOUNT,
+        ["X-Url"] = URL,
+        ["X-Action"] = "Get-Real-Data"
+    })
+    print(Colors.green .. "GET Request sent to the 0rbit process.")
+end
+
+--[[
+    Function to update the crypto news.
+]]
+function receiveCryptoData(msg)
+    local res = json.decode(msg.Data);
+    for _, article in ipairs(res.articles) do
+        local newsItem = {
+            title = article.title,
+            description = article.description,
+            url = article.url
+        }
+        table.insert(CRYPTO_NEWS, newsItem)
+    end
+    print("Crypto News Updated")
+end
+
+--[[
+    Handlers to get latest crypto news.
+]]
+Handlers.add(
+    "GetCryptoNews",
+    Handlers.utils.hasMatchingTag("Action", "Get-Crypto-News"),
+    getCryptoNews
+)
+
+--[[
+    CRON Handler to fetch the crypto news using 0rbit in a defined interval.
+]]
+Handlers.add(
+    "CronTickCrypto",
+    Handlers.utils.hasMatchingTag("Action", "Cron-Crypto"),
+    fetchCryptoNews
+)
+
+--[[
+    Handlers to receive data from the 0rbit process for crypto news.
+]]
+Handlers.add(
+    "ReceiveCryptoData",
+    Handlers.utils.hasMatchingTag("Action", "Receive-Crypto-Response"),
+    receiveCryptoData
+)

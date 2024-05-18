@@ -1,0 +1,179 @@
+local json = require("json")
+
+-- processId of the 0rbit process.
+_0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"
+
+-- Base URL for osmosis API
+BASE_URL = "https://api.osmosis.zone/tokens/v2/price/"
+
+-- Mapping to store the token prices with their osmosis id
+TOKEN_PRICES = TOKEN_PRICES or {
+    BTC = {
+        osmosis_id = "BTC",
+        price = 500,
+        last_update_timestamp = 0
+    },
+    ETH = {
+        osmosis_id = "ETH",
+        price = 0,
+        last_update_timestamp = 0
+    },
+    SOL = {
+        osmosis_id = "SOL",
+        price = 0,
+        last_update_timestamp = 0
+    }
+}
+
+-- Mapping to store requested token to add to price feed.
+REQUESTED_TOKENS = REQUESTED_TOKENS or {}
+
+-- Log storage
+LOGS = LOGS or {}
+
+-- Utility function to log messages
+local function log_message(from, tag, data)
+    table.insert(LOGS, {
+        From = from,
+        Tag = tag,
+        Data = data
+    })
+end
+
+-- Function to add a new token to the TOKEN_PRICES table
+Handlers.add(
+    "AddToken",
+    Handlers.utils.hasMatchingTag("Action", "Add-Token"),
+    function(msg)
+        if msg.From == ao.id then
+            local token = msg.Tags.Token
+            local osmosis_id = msg.Tags.OsmosisId
+
+            if not TOKEN_PRICES[token] then
+                TOKEN_PRICES[token] = {
+                    osmosis_id = osmosis_id,
+                    price = 0,
+                    last_update_timestamp = 0
+                }
+                ao.send({
+                    Target = msg.From,
+                    Tags = {
+                        ['Message-Id'] = msg.Id,
+                        Token = token
+                    }
+                })
+                log_message(msg.From, "Add-Token", { Token = token, Message = "Success" })
+            else
+                ao.send({
+                    Target = msg.From,
+                    Tags = {
+                        ['Message-Id'] = msg.Id,
+                        Error = 'Token already exists'
+                    }
+                })
+                log_message(msg.From, "Add-Token", { Token = token, Message = "Token already exists" })
+            end
+        else
+            ao.send({
+                Target = msg.From,
+                Tags = {
+                    Action = 'Add Token Error',
+                    ['Message-Id'] = msg.Id,
+                    Error = 'Only the Process Owner can add tokens'
+                }
+            })
+            log_message(msg.From, "Add-Token", { Message = "Not Owner" })
+        end
+    end
+)
+
+-- Function to request token addition in the price-feed
+Handlers.add(
+    "RequestAddToken",
+    Handlers.utils.hasMatchingTag("Action", "Request-Add-Token"),
+    function(msg)
+        local token = msg.Tags.Token
+        local chain_id = msg.Tags.ChainId
+
+        assert(type(token) == "string", "Token Name for token addition is required")
+        assert(type(chain_id) == "string", "Chain Id for token addition is required")
+
+        REQUESTED_TOKENS[token] = chain_id
+
+        ao.send({
+            Target = msg.From,
+            Tags = {
+                Action = 'Token Addition Request'
+            },
+            Data = "Your token request addition submitted!"
+        })
+        log_message(msg.From, "Request-Add-Token", { Token = token, ChainId = chain_id, Message = "Success" })
+    end
+)
+
+-- Function to get the token price from the TOKEN_PRICES table
+Handlers.add(
+    "GetPrice",
+    Handlers.utils.hasMatchingTag("Action", "Get-Price"),
+    function(msg)
+        local token = msg.Tags.Token
+        if TOKEN_PRICES[token] then
+            local price = TOKEN_PRICES[token].price
+            if price == 0 then
+                ao.send({
+                    Target = msg.From,
+                    Tags = {
+                        ['Message-Id'] = msg.Id,
+                        Error = 'Price not available! Please contact @0rbitco on X'
+                    }
+                })
+            else
+                Handlers.utils.reply(tostring(price))(msg)
+            end
+            log_message(msg.From, "Get-Price", { Token = token, Message = "Success" })
+        else
+            ao.send({
+                Target = msg.From,
+                Tags = {
+                    ['Message-Id'] = msg.Id,
+                    Error = 'Token not found'
+                }
+            })
+            log_message(msg.From, "Get-Price", { Token = token, Message = "Token not found" })
+        end
+    end
+)
+
+-- CRON FUNCTIONS TO UPDATE THE TOKEN PRICES
+Handlers.add(
+    "CronTick",
+    Handlers.utils.hasMatchingTag("Action", "Cron"),
+    function()
+        for token, v in pairs(TOKEN_PRICES) do
+            local url = BASE_URL .. v.osmosis_id
+            ao.send({
+                Target = _0RBIT,
+                Action = "Get-Real-Data",
+                Url = url,
+                Token = token
+            })
+        end
+    end
+)
+
+-- Handler to receive data and update token prices
+Handlers.add(
+    "ReceivingData",
+    Handlers.utils.hasMatchingTag("Action", "Receive-data-feed"),
+    function(msg)
+        local res = json.decode(msg.Data)
+        local token = msg.Tags.Token
+        if TOKEN_PRICES[token] then
+            TOKEN_PRICES[token].price = res.price
+            TOKEN_PRICES[token].last_update_timestamp = msg.Timestamp
+            log_message(msg.From, "ReceivingData", { Token = token, Price = res.price, Timestamp = msg.Timestamp })
+        else
+            log_message(msg.From, "ReceivingData", { Token = token, Message = "Token not found in TOKEN_PRICES" })
+        end
+    end
+)

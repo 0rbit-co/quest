@@ -1,27 +1,59 @@
-# 0rbit Quests
+local json = require("json")
 
-> Note: Before picking up the quest please get yourself familiar with https://cookbook_ao.arweave.dev/welcome/index.html and then  Join `Quest` channel and pick up the quest and submit using the command mentioned in the Url.
+-- Define the ORBIT target process ID
+_ORBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"
 
-- #1
+-- Function to handle errors
+function handleError(msg, errorMessage)
+    ao.send({
+        Target = msg.From,
+        Tags = {
+            Action = "Error",
+            ["Message-id"] = msg.Id,
+            Error = errorMessage
+        }
+    })
+end
 
-Name: Price Feed Bot
+-- Handler for fetching cryptocurrency prices
+Handlers.add("joks",
+    Handlers.utils.hasMatchingTag("Action", "micdrop"),
+    function(msg)
+        local token = msg.Tags.Token
+        if not token then
+            handleError(msg, "Token not provided")
+            return
+        end
 
-Description: Create a process that will provide the price feed for a token(s) when the users ask. The bot will be evaluated based on the live demo and the codebase. 
-Submit a PR here: https://github.com/0rbit-co/quest with the Name=`price-feed-bot-${username}` and with the codebase and demo link in the description.
+        local url = "https://api.coingecko.com/api/v3/simple/price?ids=" .. token .. "&vs_currencies=usd"
+        ao.send({
+            Target = _ORBIT,
+            Action = "Get-Real-Data",
+            Url = url
+        })
+        Handlers.utils.reply("PriceFetch")(msg)
+    end
+)
 
-Points: 200 $0RBT Points will be awarded to PR after the successful evaluation. Check the below URL for more info.
-
-Url: To gather more information about this quest, visit https://github.com/0rbit-co/quest/blob/main/price-feed-bot.md
-
-- #2
-
-Name: News Feed Bot
-
-Description: Create a News Feed Bot that will provide the latest news and updates every 4 hours. The bot will be evaluated based on the live demo and the codebase. 
-Submit a PR here: https://github.com/0rbit-co/quest with the Name=`news-feed-bot-${username}` and with the codebase and demo link in the description.
-
-Points: 300 $0RBT Points will be awarded to PR after the successful evaluation. Check the below URL for more info.
-
-Url: To gather more information about this quest, visit https://github.com/0rbit-co/quest/blob/main/news-feed-bot.md
-
-
+-- Handler for receiving data from the ORBIT process
+Handlers.add("ReceiveData",
+    Handlers.utils.hasMatchingTag("Action", "Receive-Response"),
+    function(msg)
+        print("Received data: " .. msg.Data)
+        local res = json.decode(msg.Data)
+        local token = msg.Tags.Token
+        if res[token] and res[token].usd then
+            ao.send({
+                Target = msg.From,
+                Tags = {
+                    Action = "Price-Response",
+                    ["Message-id"] = msg.Id,
+                    Price = res[token].usd
+                }
+            })
+            print("Price of " .. token .. " is " .. res[token].usd)
+        else
+            handleError(msg, "Failed to fetch price")
+        end
+    end
+)

@@ -1,3 +1,5 @@
+-- this is an example for osmosis api
+
 local json = require("json")
 
 -- processId of the 0rbit process.

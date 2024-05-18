@@ -1,4 +1,4 @@
--- PID cSh3iRyE3_qGdRzczwkZxG7bHfFC3Kq7xhO4toPbp9k
+-- cSh3iRyE3_qGdRzczwkZxG7bHfFC3Kq7xhO4toPbp9k
 
 local json = require("json")
 

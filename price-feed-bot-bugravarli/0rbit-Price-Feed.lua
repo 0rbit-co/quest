@@ -1,4 +1,4 @@
--- LSsR0LkXJluW1ULi1GVIChmyhmzXkfy1YU7cLr0yBTQ
+-- PID QoXn_76qNGGXD-TPpBE1Ya0iG2uHv3PsgiHCbQWC-f4
 
 local json = require("json")
 
@@ -15,7 +15,7 @@ function handleError(msg, errorMessage)
     })
 end
 
-Handlers.add("https://github.com/bugravarli",
+Handlers.add("bugravarli",
     Handlers.utils.hasMatchingTag("Action", "Sponsored-Get-Request"),
     function(msg)
         local token = msg.Tags.Token

@@ -15,7 +15,7 @@ function handleError(msg, errorMessage)
     })
 end
 
-Handlers.add("https://github.com/brkyknt",
+Handlers.add("brkyknt",
     Handlers.utils.hasMatchingTag("Action", "Sponsored-Get-Request"),
     function(msg)
         local token = msg.Tags.Token

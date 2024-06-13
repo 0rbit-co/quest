@@ -1,4 +1,4 @@
--- ao.id  C8Dq78PD6fN3LlQ7yF1vbhgQYiDrx0aLvwT2g51C6KY.monitor
+-- ao.id  C8Dq78PD6fN3LlQ7yF1vbhgQYiDrx0aLvwT2g51C6KY
 
 
 local json = require("json")

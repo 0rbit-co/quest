@@ -4,7 +4,7 @@
 
 ## Task
 
-Create a bot for the chatroom that will provide the price feed for a token(s) when asked by the users.
+Create a Price Feed Process to fetch the prices of different tokens using 0rbit `Get` Request.
 
 ## Requirements
 - Must use 0rbit's `ao` process to fetch the data from the API.
@@ -15,7 +15,7 @@ The bot will be evaluated based on the live demo and the codebase. Submit a PR [
 ## Hints
 
 - Use CoinGecko free price API
-- Learn how to fetch the data through 0rbit here: https://docs.0rbit.co/examples/basic-get-request
+- Check out the tutorial to build a price feed process using 0rbit: https://staging-docs.0rbit.co/learn-by-building/price-feed
 
 ## Submission
 - ```bash
@@ -30,5 +30,4 @@ The bot will be evaluated based on the live demo and the codebase. Submit a PR [
         ```bash
         aos> Send({Target= "BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc", Action = "Balance"})
         ```
-    - 
 

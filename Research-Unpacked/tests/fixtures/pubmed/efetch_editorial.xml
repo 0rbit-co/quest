@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEST FIXTURE ONLY. An Editorial, i.e. a non-target publication type the
+     fast discovery filter is expected to reject. DOI deliberately matches
+     tests/fixtures/crossref/works_editorial.json to demonstrate that
+     Crossref alone cannot reliably signal "editorial" (its `type` field is
+     coarse) but a PubMed/Crossref merge inherits PubMed's more granular
+     PublicationType. Not for production ingestion. -->
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation>
+      <PMID>40100007</PMID>
+      <Article>
+        <Journal>
+          <Title>Journal of Editorial Commentary (Fixture)</Title>
+        </Journal>
+        <ArticleTitle>Editorial: reflections on the field (fixture record)</ArticleTitle>
+        <AuthorList>
+          <Author><LastName>Theta</LastName><Initials>X</Initials></Author>
+        </AuthorList>
+        <PublicationTypeList>
+          <PublicationType>Editorial</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2026</Year><Month>08</Month><Day>06</Day>
+        </ArticleDate>
+        <ELocationID EIdType="doi">10.1000/xyz-editorial</ELocationID>
+      </Article>
+    </MedlineCitation>
+  </PubmedArticle>
+</PubmedArticleSet>

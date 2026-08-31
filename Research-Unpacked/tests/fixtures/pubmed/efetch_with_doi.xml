@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEST FIXTURE ONLY. Record with a DOI present. DOI deliberately matches
+     tests/fixtures/crossref/works_duplicate_of_pubmed.json so the
+     fixture-mode integration test can exercise DOI-based cross-source
+     deduplication. Not for production ingestion. -->
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation>
+      <PMID>40100003</PMID>
+      <Article>
+        <Journal>
+          <Title>American Journal of Cardiovascular Drugs (Fixture)</Title>
+        </Journal>
+        <ArticleTitle>Stair climbing and cardiovascular risk reduction (fixture record with DOI)</ArticleTitle>
+        <Abstract>
+          <AbstractText>Fixture abstract for a record that carries a DOI, used to test DOI extraction.</AbstractText>
+        </Abstract>
+        <AuthorList>
+          <Author><LastName>Delta</LastName><Initials>T</Initials></Author>
+        </AuthorList>
+        <PublicationTypeList>
+          <PublicationType>Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2026</Year><Month>08</Month><Day>13</Day>
+        </ArticleDate>
+        <ELocationID EIdType="doi">10.1007/s40256-026-00811-x</ELocationID>
+      </Article>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="doi">10.1007/s40256-026-00811-x</ArticleId>
+        <ArticleId IdType="pubmed">40100003</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

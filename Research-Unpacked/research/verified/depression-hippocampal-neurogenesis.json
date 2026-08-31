@@ -1,0 +1,72 @@
+{
+  "id": "depression-hippocampal-neurogenesis",
+  "exact_title": "Dysregulated adult hippocampal neurogenesis in major depressive disorder",
+  "journal": "Nature Medicine",
+  "publication_date": "2026-08-21",
+  "doi": "10.1038/s41591-026-04571-8",
+  "pmid": null,
+  "original_url": "https://www.nature.com/articles/s41591-026-04571-8",
+  "publication_status": "peer-reviewed article",
+
+  "verification_status": "GREEN",
+  "verification_notes": "Verified against the primary paper (DOI 10.1038/s41591-026-04571-8, Nature Medicine, 2026-08-21): title, journal, study design (multiomic postmortem human hippocampal tissue study), sample composition across the three assay types, primary outcome, main result, and major limitations all confirmed. pmid not yet assigned/found. sample_size is left null rather than collapsed into one number because the source reports three distinct assay-level cohorts (snMultiome, spatial, proteomics) with different Ns; the breakdown is recorded in study_design/population instead. funding and conflicts_of_interest were not established in the prior audit and remain null.",
+
+  "study_design": "Multiomic postmortem human hippocampal tissue study using single-nucleus RNA-seq/ATAC-seq, spatial transcriptomics and proteomics. Primary snMultiome analysis: 11 MDD and 19 control samples retained after QC. Spatial analysis: 9 MDD and 11 control biological samples. Proteomics: 12 MDD and 12 control individuals.",
+  "sample_size": null,
+  "population": "Postmortem human hippocampal tissue from nonmedicated major depressive disorder donors and neurotypical controls.",
+  "primary_outcome": "Neurogenic-lineage cell proportions and gene-regulatory activity across the hippocampal neurogenic trajectory.",
+  "main_result": "MDD hippocampi showed a shift toward more quiescent early-stage progenitors and fewer neuroblasts, consistent with a stalled rather than absent neurogenic trajectory.",
+  "effect_size": null,
+  "confidence_interval": null,
+  "p_value": null,
+  "major_limitations": "Postmortem; cross-sectional; cannot establish whether altered neurogenesis causes or results from MDD; small donor sample; differences in recent stress exposure may confound interpretation.",
+  "funding": null,
+  "conflicts_of_interest": null,
+
+  "paper_publication_date": "2026-08-21",
+  "media_date": null,
+  "why_now": "Recently published human multiomic evidence relevant to the longstanding scientific debate around adult hippocampal neurogenesis and depression.",
+
+  "scientific_components": {
+    "study_design_quality": 9,
+    "sample_strength": 5,
+    "outcome_quality": 5,
+    "statistical_robustness": 6,
+    "replication_consistency": 3,
+    "limitations_bias_risk": 2
+  },
+  "youtube_components": {
+    "audience_relevance": 8,
+    "curiosity_surprise": 9,
+    "human_consequence": 6,
+    "visual_storytelling": 6,
+    "timeliness": 4,
+    "title_thumbnail_potential": 3,
+    "practical_emotional_relevance": 2
+  },
+
+  "provisional_fields": [
+    "pmid",
+    "sample_size",
+    "effect_size",
+    "confidence_interval",
+    "p_value",
+    "media_date",
+    "funding",
+    "conflicts_of_interest",
+    "replication_consistency"
+  ],
+
+  "headline_defensibility": "YELLOW",
+  "proposed_title": "Depression and Your Brain's Missing Neurons: What Postmortem Tissue Actually Shows",
+  "thumbnail_text": "MDD BRAINS SHOW STALLED NEUROGENESIS",
+  "best_video_angle": "Explain what the postmortem data show while explicitly separating association from causal direction.",
+
+  "scientific_score": 30,
+  "youtube_score": 38,
+  "final_radar_score": 68,
+  "evidence_tier": "C",
+  "content_priority": "HIGH",
+  "production_priority": "NO_STANDARD_PRODUCTION_PRIORITY",
+  "validation_status": "PENDING"
+}

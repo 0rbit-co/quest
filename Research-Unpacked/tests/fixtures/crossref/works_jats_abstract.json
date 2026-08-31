@@ -1,0 +1,22 @@
+{
+  "_fixture_note": "TEST FIXTURE ONLY. Abstract contains real Crossref-style JATS/HTML markup, to test tag stripping. Not for production ingestion.",
+  "status": "ok",
+  "message-type": "work-list",
+  "message": {
+    "items": [
+      {
+        "DOI": "10.1000/fixture-crossref-jats-abstract",
+        "title": ["A record with JATS-tagged abstract markup (fixture)"],
+        "container-title": ["Journal of Markup Handling (Fixture)"],
+        "type": "journal-article",
+        "publisher": "Fixture Publishing Group",
+        "URL": "https://doi.org/10.1000/fixture-crossref-jats-abstract",
+        "published": {"date-parts": [[2026, 8, 20]]},
+        "author": [
+          {"family": "Pi", "given": "FF"}
+        ],
+        "abstract": "<jats:title>Abstract</jats:title><jats:p>Background text goes here.</jats:p><jats:p>Results text goes here &amp; more.</jats:p>"
+      }
+    ]
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://research-unpacked.local/schemas/study.schema.json",
+  "title": "Research Radar Study Record",
+  "description": "Schema for a single study record moving through the Research Radar pipeline. Score/tier/priority fields are recalculated and enforced by scripts/validate_study.py; values stored here are treated as claims to verify, not trusted facts.",
+  "type": "object",
+  "required": [
+    "id",
+    "verification_status",
+    "publication_date",
+    "scientific_components",
+    "youtube_components",
+    "headline_defensibility",
+    "scientific_score",
+    "youtube_score",
+    "final_radar_score",
+    "evidence_tier",
+    "content_priority",
+    "production_priority",
+    "validation_status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable unique identifier, e.g. a slug.",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "exact_title": { "type": ["string", "null"] },
+    "journal": { "type": ["string", "null"] },
+    "publication_date": {
+      "type": ["string", "null"],
+      "description": "ISO-8601 date (YYYY-MM-DD) the paper was published. Required (non-null) for ranking eligibility.",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "doi": { "type": ["string", "null"] },
+    "pmid": { "type": ["string", "null"] },
+    "original_url": { "type": ["string", "null"], "format": "uri" },
+    "publication_status": {
+      "type": ["string", "null"],
+      "description": "e.g. peer-reviewed, preprint, in-press, retracted.",
+      "enum": ["peer-reviewed", "preprint", "in-press", "retracted", null]
+    },
+
+    "verification_status": {
+      "type": "string",
+      "enum": ["GREEN", "YELLOW", "RED"],
+      "description": "Whether claims trace back to the primary research source. See config/verification_rules.md. Independent of evidence_tier/content_priority/production_priority."
+    },
+    "verification_notes": { "type": ["string", "null"] },
+
+    "study_design": { "type": ["string", "null"] },
+    "sample_size": { "type": ["integer", "null"], "minimum": 0 },
+    "population": { "type": ["string", "null"] },
+    "primary_outcome": { "type": ["string", "null"] },
+    "main_result": { "type": ["string", "null"] },
+    "effect_size": { "type": ["string", "null"] },
+    "confidence_interval": { "type": ["string", "null"] },
+    "p_value": { "type": ["string", "null"] },
+    "major_limitations": { "type": ["string", "null"] },
+    "funding": { "type": ["string", "null"] },
+    "conflicts_of_interest": { "type": ["string", "null"] },
+
+    "paper_publication_date": {
+      "type": ["string", "null"],
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "media_date": {
+      "type": ["string", "null"],
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "why_now": { "type": ["string", "null"] },
+
+    "scientific_components": {
+      "type": "object",
+      "description": "Raw component scores, 50 points total. Sum is recalculated by the validator; see config/scoring_rules.md.",
+      "required": [
+        "study_design_quality",
+        "sample_strength",
+        "outcome_quality",
+        "statistical_robustness",
+        "replication_consistency",
+        "limitations_bias_risk"
+      ],
+      "properties": {
+        "study_design_quality": { "type": ["integer", "null"], "minimum": 0, "maximum": 15 },
+        "sample_strength": { "type": ["integer", "null"], "minimum": 0, "maximum": 10 },
+        "outcome_quality": { "type": ["integer", "null"], "minimum": 0, "maximum": 8 },
+        "statistical_robustness": { "type": ["integer", "null"], "minimum": 0, "maximum": 7 },
+        "replication_consistency": { "type": ["integer", "null"], "minimum": 0, "maximum": 5 },
+        "limitations_bias_risk": { "type": ["integer", "null"], "minimum": 0, "maximum": 5 }
+      },
+      "additionalProperties": false
+    },
+
+    "youtube_components": {
+      "type": "object",
+      "description": "Raw component scores, 50 points total. Sum is recalculated by the validator; see config/scoring_rules.md.",
+      "required": [
+        "audience_relevance",
+        "curiosity_surprise",
+        "human_consequence",
+        "visual_storytelling",
+        "timeliness",
+        "title_thumbnail_potential",
+        "practical_emotional_relevance"
+      ],
+      "properties": {
+        "audience_relevance": { "type": ["integer", "null"], "minimum": 0, "maximum": 10 },
+        "curiosity_surprise": { "type": ["integer", "null"], "minimum": 0, "maximum": 10 },
+        "human_consequence": { "type": ["integer", "null"], "minimum": 0, "maximum": 8 },
+        "visual_storytelling": { "type": ["integer", "null"], "minimum": 0, "maximum": 7 },
+        "timeliness": { "type": ["integer", "null"], "minimum": 0, "maximum": 5 },
+        "title_thumbnail_potential": { "type": ["integer", "null"], "minimum": 0, "maximum": 5 },
+        "practical_emotional_relevance": { "type": ["integer", "null"], "minimum": 0, "maximum": 5 }
+      },
+      "additionalProperties": false
+    },
+
+    "provisional_fields": {
+      "type": "array",
+      "description": "Names of fields in this record whose values are unconfirmed placeholders (or null) rather than verified facts.",
+      "items": { "type": "string" },
+      "default": []
+    },
+
+    "headline_defensibility": {
+      "type": "string",
+      "enum": ["GREEN", "YELLOW", "RED"],
+      "description": "Whether the proposed_title is defensible given the actual findings. Independent of verification_status. RED caps youtube_components.title_thumbnail_potential at 2."
+    },
+    "proposed_title": { "type": ["string", "null"] },
+    "thumbnail_text": { "type": ["string", "null"] },
+    "best_video_angle": { "type": ["string", "null"] },
+
+    "scientific_score": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "maximum": 50,
+      "description": "Must equal the sum of scientific_components. Recalculated and enforced by the validator."
+    },
+    "youtube_score": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "maximum": 50,
+      "description": "Must equal the sum of youtube_components. Recalculated and enforced by the validator."
+    },
+    "final_radar_score": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Must equal scientific_score + youtube_score."
+    },
+    "evidence_tier": {
+      "type": ["string", "null"],
+      "enum": ["A", "B", "C", "D", null],
+      "description": "Derived from scientific_score: A 42-50, B 34-41, C 25-33, D below 25."
+    },
+    "content_priority": {
+      "type": ["string", "null"],
+      "enum": ["VERY_HIGH", "HIGH", "MEDIUM", "LOW", null],
+      "description": "Derived from youtube_score: VERY_HIGH 43-50, HIGH 36-42, MEDIUM 28-35, LOW below 28."
+    },
+    "production_priority": {
+      "type": ["string", "null"],
+      "enum": ["PRIORITY_1", "PRIORITY_2", "PRIORITY_3", "NO_STANDARD_PRODUCTION_PRIORITY", null],
+      "description": "Derived from evidence_tier + content_priority per config/scoring_rules.md."
+    },
+    "validation_status": {
+      "type": "string",
+      "enum": ["PENDING", "PASS", "FAIL"],
+      "description": "Result of the last deterministic validation run. Only scripts/validate_study.py should set this to PASS or FAIL."
+    },
+    "ranking_eligible": {
+      "type": ["boolean", "null"],
+      "description": "Computed output (not a trusted input): TRUE only if verification_status==GREEN AND publication_date is inside the active research window AND validation_status==PASS. Recomputed by the validator/builder; any value stored here is informational only."
+    }
+  },
+  "additionalProperties": false
+}

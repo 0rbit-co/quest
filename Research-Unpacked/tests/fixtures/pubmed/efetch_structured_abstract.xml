@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEST FIXTURE ONLY. Record with a labeled/structured abstract (multiple
+     AbstractText elements with @Label), to test that the parser joins
+     sections with their labels. Not for production ingestion. -->
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation>
+      <PMID>40100006</PMID>
+      <Article>
+        <Journal>
+          <Title>Structured Reporting Journal (Fixture)</Title>
+        </Journal>
+        <ArticleTitle>A study reported with a structured abstract (fixture record)</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND">Fixture background section text.</AbstractText>
+          <AbstractText Label="METHODS">Fixture methods section text.</AbstractText>
+          <AbstractText Label="RESULTS">Fixture results section text.</AbstractText>
+          <AbstractText Label="CONCLUSIONS">Fixture conclusions section text.</AbstractText>
+        </Abstract>
+        <AuthorList>
+          <Author><LastName>Eta</LastName><Initials>W</Initials></Author>
+        </AuthorList>
+        <PublicationTypeList>
+          <PublicationType>Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2026</Year><Month>08</Month><Day>14</Day>
+        </ArticleDate>
+        <ELocationID EIdType="doi">10.1000/fixture-structured-abstract</ELocationID>
+      </Article>
+    </MedlineCitation>
+  </PubmedArticle>
+</PubmedArticleSet>

@@ -1,0 +1,21 @@
+{
+  "_fixture_note": "TEST FIXTURE ONLY. An editorial as Crossref actually represents it: Crossref's `type` vocabulary has no distinct 'editorial' value, so this record is still typed 'journal-article' -- Crossref alone cannot reliably signal that this is a non-target editorial. DOI deliberately matches tests/fixtures/pubmed/efetch_editorial.xml so the fixture-mode integration test can show that merging in PubMed's PublicationType='Editorial' is what makes the fast filter correctly reject the merged candidate. Not for production ingestion.",
+  "status": "ok",
+  "message-type": "work-list",
+  "message": {
+    "items": [
+      {
+        "DOI": "10.1000/xyz-editorial",
+        "title": ["Editorial: reflections on the field (fixture record)"],
+        "container-title": ["Journal of Editorial Commentary (Fixture)"],
+        "type": "journal-article",
+        "publisher": "Fixture Publishing Group",
+        "URL": "https://doi.org/10.1000/xyz-editorial",
+        "published": {"date-parts": [[2026, 8, 6]]},
+        "author": [
+          {"family": "Theta", "given": "X"}
+        ]
+      }
+    ]
+  }
+}

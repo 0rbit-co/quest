@@ -1,0 +1,67 @@
+{
+  "id": "stair-climbing-cardiovascular-mortality",
+  "exact_title": "Evaluating the Impact of Stair Climbing on Cardiovascular Risk Reduction: A Systematic Review and Meta-analysis",
+  "journal": "American Journal of Cardiovascular Drugs",
+  "publication_date": "2026-08-13",
+  "doi": "10.1007/s40256-026-00811-x",
+  "pmid": null,
+  "original_url": "https://link.springer.com/article/10.1007/s40256-026-00811-x",
+  "publication_status": "peer-reviewed article",
+
+  "verification_status": "GREEN",
+  "verification_notes": "Verified against the primary paper (DOI 10.1007/s40256-026-00811-x, American Journal of Cardiovascular Drugs, 2026-08-13): title, journal, study design (systematic review and meta-analysis of observational studies), sample composition, primary outcomes, main result, pooled effect sizes with CIs and p-values, major limitations, and funding statement all confirmed. pmid not yet assigned/found. Heterogeneity/sensitivity-analysis statistics referenced in the source were not fully re-verified during the prior audit and are treated as provisional rather than restated as confirmed figures. conflicts_of_interest is recorded strictly as 'no industry funding noted' per the source -- nothing broader is inferred. sample_size is recorded as the overall pooled total (480,479 participants across 9 studies); the mortality-specific subset (5 studies, 455,619 participants) is recorded separately in study_design rather than invented as a second sample_size field. headline_defensibility GREEN applies only to the replacement title below ('Stairs and Heart Death: The 39% Number Isn't What You Think'); an earlier causal-framed candidate headline was assessed RED and must not be restored.",
+
+  "study_design": "Systematic review and meta-analysis of observational studies. Overall pooled analysis: 9 studies, 480,479 total participants. Mortality-specific pooled analysis: 5 studies, 455,619 participants.",
+  "sample_size": 480479,
+  "population": "Adults approximately 35-84 years old across included observational cohorts.",
+  "primary_outcome": "Cardiovascular mortality and all-cause mortality.",
+  "main_result": "Stair climbing was associated with lower cardiovascular mortality and lower all-cause mortality.",
+  "effect_size": "Cardiovascular mortality: RR 0.61, 95% CI 0.48-0.79, p=0.0002. All-cause mortality: RR 0.76, 95% CI 0.62-0.94, p=0.01.",
+  "confidence_interval": "Cardiovascular mortality: 0.48-0.79. All-cause mortality: 0.62-0.94.",
+  "p_value": "Cardiovascular mortality: p=0.0002. All-cause mortality: p=0.01.",
+  "major_limitations": "All underlying studies observational; healthy-user bias; reverse causation; self-reported activity in underlying studies; heterogeneity statistics were not fully verified during the prior audit.",
+  "funding": "NIHR Academic Clinical Fellowships / Doctoral Research Fellowship",
+  "conflicts_of_interest": "No industry funding noted; nothing beyond that is inferred.",
+
+  "paper_publication_date": "2026-08-13",
+  "media_date": null,
+  "why_now": "Recently published evidence on a simple everyday behavior with broad public-health relevance, although the topic is primarily evergreen rather than tied to a breaking event.",
+
+  "scientific_components": {
+    "study_design_quality": 10,
+    "sample_strength": 9,
+    "outcome_quality": 8,
+    "statistical_robustness": 6,
+    "replication_consistency": 3,
+    "limitations_bias_risk": 2
+  },
+  "youtube_components": {
+    "audience_relevance": 9,
+    "curiosity_surprise": 8,
+    "human_consequence": 7,
+    "visual_storytelling": 6,
+    "timeliness": 3,
+    "title_thumbnail_potential": 4,
+    "practical_emotional_relevance": 5
+  },
+
+  "provisional_fields": [
+    "pmid",
+    "media_date",
+    "replication_consistency",
+    "statistical_robustness (sensitivity analysis / heterogeneity component not fully verified)"
+  ],
+
+  "headline_defensibility": "GREEN",
+  "proposed_title": "Stairs and Heart Death: The 39% Number Isn't What You Think",
+  "thumbnail_text": "39% LOWER HEART-DEATH RISK — BUT IS IT THE STAIRS?",
+  "best_video_angle": "Use the study to explain why a very large observational association can still fail to establish causation.",
+
+  "scientific_score": 38,
+  "youtube_score": 42,
+  "final_radar_score": 80,
+  "evidence_tier": "B",
+  "content_priority": "HIGH",
+  "production_priority": "PRIORITY_2",
+  "validation_status": "PENDING"
+}

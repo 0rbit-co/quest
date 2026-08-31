@@ -1,0 +1,6 @@
+{
+  "$comment": "Active research window used for ranking eligibility. A study is only ranking_eligible if verification_status is GREEN, validation_status is PASS, and publication_date falls within [window_start, window_end] inclusive. Update these dates as the Radar's coverage period moves forward; this file has no automation attached to it in V1.",
+  "window_start": "2026-07-01",
+  "window_end": "2026-08-31",
+  "timezone": "UTC"
+}

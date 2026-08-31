@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEST FIXTURE ONLY. Record with several PublicationType entries at once,
+     to test that the parser collects all of them (not just the first).
+     Not for production ingestion. -->
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation>
+      <PMID>40100005</PMID>
+      <Article>
+        <Journal>
+          <Title>Multicenter Trials Review (Fixture)</Title>
+        </Journal>
+        <ArticleTitle>A multicenter randomized trial with several indexed publication types (fixture record)</ArticleTitle>
+        <Abstract>
+          <AbstractText>Fixture abstract for a record with multiple publication types.</AbstractText>
+        </Abstract>
+        <AuthorList>
+          <Author><LastName>Zeta</LastName><Initials>V</Initials></Author>
+        </AuthorList>
+        <PublicationTypeList>
+          <PublicationType>Journal Article</PublicationType>
+          <PublicationType>Randomized Controlled Trial</PublicationType>
+          <PublicationType>Multicenter Study</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2026</Year><Month>08</Month><Day>11</Day>
+        </ArticleDate>
+        <ELocationID EIdType="doi">10.1000/fixture-multi-pubtype</ELocationID>
+      </Article>
+    </MedlineCitation>
+  </PubmedArticle>
+</PubmedArticleSet>

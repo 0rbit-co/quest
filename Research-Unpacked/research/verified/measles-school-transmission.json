@@ -1,0 +1,69 @@
+{
+  "id": "measles-school-transmission",
+  "exact_title": "County, district and community-level measles transmission in the United States in 2013−2025",
+  "journal": "Nature Medicine",
+  "publication_date": "2026-08-18",
+  "doi": "10.1038/s41591-026-04561-w",
+  "pmid": null,
+  "original_url": "https://www.nature.com/articles/s41591-026-04561-w",
+  "publication_status": "peer-reviewed article",
+
+  "verification_status": "GREEN",
+  "verification_notes": "Verified against the primary paper (DOI 10.1038/s41591-026-04561-w, Nature Medicine, 2026-08-18): title, journal, study design, primary outcome (Rv relative to epidemic threshold at school/district/county scale), main result, previously-verified enrichment factors (5.5x, 8.4x, 2.0x) and R0=15 calibration, major limitations, funding, and conflicts-of-interest statement all confirmed. pmid not yet assigned/found. Exact dataset scope is multi-level (states, schools, districts, counties) and is not reduced to a single sample_size integer to avoid inventing a number the source does not state as one figure -- full scope is recorded in study_design instead. No confidence_interval or p_value figures were supplied for the headline effect and are left null rather than invented.",
+
+  "study_design": "Multiscale mathematical/transmission modeling using a nationwide administrative vaccination database. Dataset scope: 45 U.S. states + DC; 50,000+ schools; 13,000+ districts; 3,000+ counties; 2013-2025.",
+  "sample_size": null,
+  "population": "U.S. kindergarten-age vaccination coverage records and population-level surveillance data.",
+  "primary_outcome": "Effective reproduction number (Rv) relative to the epidemic threshold at school, district and county scale.",
+  "main_result": "School-level Rv crossed the epidemic threshold in 2022–2023 while the risk was obscured at more aggregated geographic levels; average susceptibility approximately doubled from about 5% to about 10% post-pandemic.",
+  "effect_size": "Outbreak-location enrichment factors previously verified as 5.5x, 8.4x and 2.0x at the reported geographic levels. R0=15 calibration was evaluated against real outbreaks.",
+  "confidence_interval": null,
+  "p_value": null,
+  "major_limitations": "Dependence on R0 calibration assumption; uneven state-level data availability/quality; geographic/reporting artifacts; model-based epidemiological outcome rather than a direct individual clinical endpoint.",
+  "funding": "Cornell Atkinson Center seed funds",
+  "conflicts_of_interest": "No competing interests declared",
+
+  "paper_publication_date": "2026-08-18",
+  "media_date": null,
+  "why_now": "Directly relevant to current U.S. measles resurgence and the surveillance gap between aggregate vaccination coverage and local school-level risk.",
+
+  "scientific_components": {
+    "study_design_quality": 11,
+    "sample_strength": 8,
+    "outcome_quality": 6,
+    "statistical_robustness": 6,
+    "replication_consistency": 3,
+    "limitations_bias_risk": 3
+  },
+  "youtube_components": {
+    "audience_relevance": 9,
+    "curiosity_surprise": 9,
+    "human_consequence": 7,
+    "visual_storytelling": 7,
+    "timeliness": 5,
+    "title_thumbnail_potential": 4,
+    "practical_emotional_relevance": 4
+  },
+
+  "provisional_fields": [
+    "pmid",
+    "sample_size",
+    "confidence_interval",
+    "p_value",
+    "media_date",
+    "replication_consistency"
+  ],
+
+  "headline_defensibility": "YELLOW",
+  "proposed_title": "America's Measles 'Elimination': The Data Gap Hiding the Real Risk",
+  "thumbnail_text": "COUNTY DATA SAYS SAFE. SCHOOL DATA SAYS OTHERWISE.",
+  "best_video_angle": "Use a county → district → school zoom-in visualization to explain how geographic aggregation can conceal concentrated transmission risk.",
+
+  "scientific_score": 37,
+  "youtube_score": 45,
+  "final_radar_score": 82,
+  "evidence_tier": "B",
+  "content_priority": "VERY_HIGH",
+  "production_priority": "PRIORITY_1",
+  "validation_status": "PENDING"
+}

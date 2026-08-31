@@ -1,0 +1,21 @@
+{
+  "_fixture_note": "TEST FIXTURE ONLY. DOI deliberately matches tests/fixtures/pubmed/efetch_with_doi.xml so the fixture-mode integration test can exercise DOI-based cross-source deduplication end to end (both sources reporting the same normal, non-editorial journal article). Not for production ingestion.",
+  "status": "ok",
+  "message-type": "work-list",
+  "message": {
+    "items": [
+      {
+        "DOI": "10.1007/S40256-026-00811-X",
+        "title": ["Stair climbing and cardiovascular risk reduction (fixture record with DOI)"],
+        "container-title": ["American Journal of Cardiovascular Drugs (Fixture)"],
+        "type": "journal-article",
+        "publisher": "Fixture Publishing Group",
+        "URL": "https://link.springer.com/article/10.1007/s40256-026-00811-x",
+        "published": {"date-parts": [[2026, 8, 13]]},
+        "author": [
+          {"family": "Delta", "given": "T"}
+        ]
+      }
+    ]
+  }
+}

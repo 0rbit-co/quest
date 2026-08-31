@@ -1,0 +1,55 @@
+{
+  "$comment": "Stage 2A discovery configuration. Controls PubMed/Crossref ingestion only — it has no effect on verification or scoring. lookback_days defines a rolling *discovery* window (today - lookback_days .. today) used to query the APIs; this is intentionally separate from config/research_window.json, which is the editorially curated window used later for ranking eligibility.",
+
+  "lookback_days": 30,
+  "max_results_per_source": 100,
+
+  "priority_topics": [
+    "medicine",
+    "public health",
+    "nutrition",
+    "exercise",
+    "sleep",
+    "neuroscience",
+    "psychology",
+    "aging",
+    "cancer",
+    "cardiovascular",
+    "metabolic health",
+    "obesity",
+    "diabetes",
+    "dementia",
+    "women's health",
+    "men's health",
+    "AI healthcare"
+  ],
+
+  "pubmed_query_terms": null,
+  "crossref_query_terms": null,
+
+  "reject_publication_types": [
+    "editorial",
+    "correction",
+    "erratum",
+    "comment",
+    "letter",
+    "protocol",
+    "conference abstract",
+    "congress",
+    "proceedings",
+    "news",
+    "retraction of publication",
+    "published erratum"
+  ],
+
+  "title_similarity_threshold": 0.92,
+
+  "ncbi_esearch_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi",
+  "ncbi_efetch_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi",
+  "crossref_api_url": "https://api.crossref.org/works",
+
+  "request_timeout_seconds": 20,
+  "pubmed_batch_size": 200,
+  "rate_limit_requests_per_second_no_key": 3,
+  "rate_limit_requests_per_second_with_key": 10
+}

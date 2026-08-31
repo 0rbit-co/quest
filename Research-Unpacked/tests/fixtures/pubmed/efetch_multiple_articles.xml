@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEST FIXTURE ONLY. Synthetic efetch response shaped like a real NCBI
+     PubmedArticleSet, containing more than one article to exercise the
+     "batch efetch" parsing path. Not for production ingestion. -->
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation>
+      <PMID>40100001</PMID>
+      <Article>
+        <Journal>
+          <Title>Journal of Sleep Research (Fixture)</Title>
+        </Journal>
+        <ArticleTitle>Sleep duration and next-day cognitive performance in adults (fixture record A)</ArticleTitle>
+        <Abstract>
+          <AbstractText>Fixture abstract text for record A, used only to test parsing.</AbstractText>
+        </Abstract>
+        <AuthorList>
+          <Author><LastName>Alpha</LastName><Initials>Q</Initials></Author>
+        </AuthorList>
+        <PublicationTypeList>
+          <PublicationType>Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2026</Year><Month>08</Month><Day>05</Day>
+        </ArticleDate>
+        <ELocationID EIdType="doi">10.1000/fixture-record-a</ELocationID>
+      </Article>
+    </MedlineCitation>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation>
+      <PMID>40100002</PMID>
+      <Article>
+        <Journal>
+          <Title>Journal of Metabolic Health (Fixture)</Title>
+        </Journal>
+        <ArticleTitle>Dietary pattern and metabolic markers in a longitudinal cohort (fixture record B)</ArticleTitle>
+        <Abstract>
+          <AbstractText>Fixture abstract text for record B, used only to test parsing.</AbstractText>
+        </Abstract>
+        <AuthorList>
+          <Author><LastName>Beta</LastName><Initials>R</Initials></Author>
+          <Author><LastName>Gamma</LastName><Initials>S</Initials></Author>
+        </AuthorList>
+        <PublicationTypeList>
+          <PublicationType>Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2026</Year><Month>08</Month><Day>07</Day>
+        </ArticleDate>
+        <ELocationID EIdType="doi">10.1000/fixture-record-b</ELocationID>
+      </Article>
+    </MedlineCitation>
+  </PubmedArticle>
+</PubmedArticleSet>

@@ -1,0 +1,24 @@
+{
+  "_fixture_note": "TEST FIXTURE ONLY. Several authors, to test that the full author list is collected. Not for production ingestion.",
+  "status": "ok",
+  "message-type": "work-list",
+  "message": {
+    "items": [
+      {
+        "DOI": "10.1000/fixture-crossref-multi-author",
+        "title": ["A multi-author collaborative study record (fixture)"],
+        "container-title": ["Journal of Large Consortia (Fixture)"],
+        "type": "journal-article",
+        "publisher": "Fixture Publishing Group",
+        "URL": "https://doi.org/10.1000/fixture-crossref-multi-author",
+        "published": {"date-parts": [[2026, 8, 19]]},
+        "author": [
+          {"family": "Mu", "given": "BB"},
+          {"family": "Nu", "given": "CC"},
+          {"family": "Xi", "given": "DD"},
+          {"family": "Omicron", "given": "EE"}
+        ]
+      }
+    ]
+  }
+}

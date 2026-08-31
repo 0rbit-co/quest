@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEST FIXTURE ONLY. Record with no DOI anywhere in ELocationID or
+     ArticleIdList, to test that normalization tolerates a missing DOI
+     rather than erroring. Not for production ingestion. -->
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation>
+      <PMID>40100004</PMID>
+      <Article>
+        <Journal>
+          <Title>Regional Public Health Bulletin (Fixture)</Title>
+        </Journal>
+        <ArticleTitle>A regional surveillance note with no assigned DOI (fixture record)</ArticleTitle>
+        <Abstract>
+          <AbstractText>Fixture abstract for a record that has no DOI at all.</AbstractText>
+        </Abstract>
+        <AuthorList>
+          <Author><LastName>Epsilon</LastName><Initials>U</Initials></Author>
+        </AuthorList>
+        <PublicationTypeList>
+          <PublicationType>Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2026</Year><Month>08</Month><Day>09</Day>
+        </ArticleDate>
+      </Article>
+    </MedlineCitation>
+  </PubmedArticle>
+</PubmedArticleSet>

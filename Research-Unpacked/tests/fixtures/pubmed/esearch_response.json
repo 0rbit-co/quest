@@ -1,0 +1,22 @@
+{
+  "_fixture_note": "TEST FIXTURE ONLY. Synthetic esearch response shaped like a real NCBI E-utilities reply. The PMIDs below correspond to the efetch_*.xml fixtures in this directory. Not for production ingestion.",
+  "header": {
+    "type": "esearch",
+    "version": "0.3"
+  },
+  "esearchresult": {
+    "count": "9",
+    "retmax": "9",
+    "retstart": "0",
+    "querytranslation": "(medicine[tiab] OR \"public health\"[tiab]) AND 2026/08/01:2026/08/31[pdat]",
+    "idlist": [
+      "40100001",
+      "40100002",
+      "40100003",
+      "40100004",
+      "40100005",
+      "40100006",
+      "40100007"
+    ]
+  }
+}

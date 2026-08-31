@@ -1,0 +1,21 @@
+{
+  "_fixture_note": "TEST FIXTURE ONLY. Emphasizes DOI extraction/normalization from a Crossref record. Not for production ingestion.",
+  "status": "ok",
+  "message-type": "work-list",
+  "message": {
+    "items": [
+      {
+        "DOI": "10.1000/Fixture-Crossref-DOI-Case",
+        "title": ["A record whose DOI needs case-normalization (fixture)"],
+        "container-title": ["Journal of DOI Handling (Fixture)"],
+        "type": "journal-article",
+        "publisher": "Fixture Publishing Group",
+        "URL": "https://doi.org/10.1000/Fixture-Crossref-DOI-Case",
+        "published": {"date-parts": [[2026, 8, 17]]},
+        "author": [
+          {"family": "Kappa", "given": "Z"}
+        ]
+      }
+    ]
+  }
+}

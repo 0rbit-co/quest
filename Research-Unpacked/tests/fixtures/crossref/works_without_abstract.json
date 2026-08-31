@@ -1,0 +1,21 @@
+{
+  "_fixture_note": "TEST FIXTURE ONLY. No 'abstract' key at all, to test that normalization tolerates a missing abstract. Not for production ingestion.",
+  "status": "ok",
+  "message-type": "work-list",
+  "message": {
+    "items": [
+      {
+        "DOI": "10.1000/fixture-crossref-no-abstract",
+        "title": ["A record with no abstract field supplied (fixture)"],
+        "container-title": ["Journal of Sparse Metadata (Fixture)"],
+        "type": "journal-article",
+        "publisher": "Fixture Publishing Group",
+        "URL": "https://doi.org/10.1000/fixture-crossref-no-abstract",
+        "published": {"date-parts": [[2026, 8, 4]]},
+        "author": [
+          {"family": "Lambda", "given": "AA"}
+        ]
+      }
+    ]
+  }
+}

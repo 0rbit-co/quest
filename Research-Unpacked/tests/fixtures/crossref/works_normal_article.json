@@ -1,0 +1,22 @@
+{
+  "_fixture_note": "TEST FIXTURE ONLY. Synthetic Crossref /works response shaped like a real one. Not for production ingestion.",
+  "status": "ok",
+  "message-type": "work-list",
+  "message": {
+    "items": [
+      {
+        "DOI": "10.1000/fixture-crossref-normal",
+        "title": ["A normal journal article record from Crossref (fixture)"],
+        "container-title": ["Journal of General Findings (Fixture)"],
+        "type": "journal-article",
+        "publisher": "Fixture Publishing Group",
+        "URL": "https://doi.org/10.1000/fixture-crossref-normal",
+        "published": {"date-parts": [[2026, 8, 16]]},
+        "author": [
+          {"family": "Iota", "given": "Y"}
+        ],
+        "abstract": "Fixture abstract text for a normal Crossref journal-article record."
+      }
+    ]
+  }
+}
